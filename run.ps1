@@ -14,4 +14,3 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "Build failed!" -ForegroundColor Red
     exit 1
 }
-1
