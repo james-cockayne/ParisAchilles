@@ -11,7 +11,7 @@ if [ $? -eq 0 ]; then
     echo ""
     echo "Running SQL converter..."
     echo "================================"
-    docker run --rm -v "C:\Code\test:/app/data" sql-converter:latest
+    docker run --rm -v "C:\Code\test:/app/data" -e DATABASE_NAME=database.db sql-converter:latest
 else
     echo "Build failed!"
     exit 1
