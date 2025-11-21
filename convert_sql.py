@@ -4,7 +4,6 @@ SQL Converter: SQL Server to DuckDB
 Converts SQL files from SQL Server syntax to DuckDB syntax using sqlglot
 """
 
-import os
 import sys
 import csv
 from pathlib import Path
