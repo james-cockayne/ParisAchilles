@@ -9,7 +9,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host ""
     Write-Host "Running SQL converter..." -ForegroundColor Cyan
     Write-Host "================================"
-    docker run --memory="12g" --rm -v "C:\Code\test:/app/data" sql-converter:latest
+    docker run --memory="12g" --rm -v "C:\Code\test:/app/data" -e DATABASE_NAME=database.db sql-converter:latest
 } else {
     Write-Host "Build failed!" -ForegroundColor Red
     exit 1

@@ -146,10 +146,8 @@ def execute_analyses(sql_base_dir, analyses, db_path):
     print(f"{'=' * 80}")
 
 
-def initialize_database():
+def initialize_database(db_path):
     """Connect to DuckDB and drop tables if they exist"""
-    db_path = '/app/data/database.db'
-    
     print(f"Connecting to DuckDB database: {db_path}")
     
     try:
@@ -218,9 +216,17 @@ def run_merge_script(db_path):
 
 
 def main():
+    # Get database name from environment variable
+    database_name = os.environ.get('DATABASE_NAME')
+    if not database_name:
+        print("ERROR: DATABASE_NAME environment variable must be set")
+        sys.exit(1)
+    
+    # Construct full database path
+    db_path = f'/app/data/{database_name}'
+    
     # Initialize database first
-    db_path = '/app/data/database.db'
-    initialize_database()
+    initialize_database(db_path)
     
     # Load analysis details CSV
     csv_path = '/app/inst/csv/achilles/achilles_analysis_details.csv'
